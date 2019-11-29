@@ -56,6 +56,21 @@ class student{
     private String lname;
     private String fname;
     private String c;
+    Connection con;
+    Statement st;
+    String dbURL = "jdbc:mySQL://localhost:3306/jdbc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String user = "root";
+    String pass = "";
+
+    public void getStatement(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(dbURL, user, pass);
+            st = con.createStatement();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 
     public void setID(int id){
         this.i = id;
